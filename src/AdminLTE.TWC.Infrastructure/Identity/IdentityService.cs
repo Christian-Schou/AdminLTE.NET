@@ -3,7 +3,7 @@ using AdminLTE.TWC.Core.Application.Common.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 
-namespace AdminLTE.TWC.Infrastructure.Data.Identity;
+namespace AdminLTE.TWC.Infrastructure.Identity;
 
 /// <summary>
 ///     Provides an implementation of <see cref="IIdentityService"/> for managing users in the identity system.
