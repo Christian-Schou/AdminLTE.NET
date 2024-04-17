@@ -1,7 +1,7 @@
 using AdminLTE.TWC.Core.Application.Common.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace AdminLTE.TWC.Infrastructure.Data.Identity;
+namespace AdminLTE.TWC.Infrastructure.Identity;
 
 /// <summary>
 ///     Provides extension methods for <see cref="IdentityResult"/>.

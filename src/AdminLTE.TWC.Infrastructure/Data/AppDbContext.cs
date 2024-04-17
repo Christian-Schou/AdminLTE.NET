@@ -1,6 +1,6 @@
 using System.Reflection;
 using AdminLTE.TWC.Core.Application.Common.Interfaces;
-using AdminLTE.TWC.Infrastructure.Data.Identity;
+using AdminLTE.TWC.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace AdminLTE.TWC.Infrastructure.Data.Identity;
+namespace AdminLTE.TWC.Infrastructure.Identity;
 
 /// <summary>
 ///     An extension of <see cref="IdentityUser"/> to add more properties
