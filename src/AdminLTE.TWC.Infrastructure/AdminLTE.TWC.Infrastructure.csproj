@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>AdminLTE.TWC.Infrastructure</RootNamespace>
+        <AssemblyName>AdminLTE.TWC.Infrastructure</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+        <!--#if (UseSQLite)-->
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+        <!--#endif-->
+        <!--#if (UseLocalDB)-->
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
+        <!--#endif-->
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\core\AdminLTE.TWC.Core.Application\AdminLTE.TWC.Core.Application.csproj" />
+    </ItemGroup>
+    
+</Project>

@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminLTE.TWC.Web", "src\AdminLTE.TWC.Web\AdminLTE.TWC.Web.csproj", "{083E73A3-7A0D-4466-90F8-9782F469B499}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminLTE.TWC.Infrastructure", "src\AdminLTE.TWC.Infrastructure\AdminLTE.TWC.Infrastructure.csproj", "{98E02A03-BA3E-47C8-A040-D44E03EC270E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{9F11F9D0-5328-4F28-8A8A-80F77EE97606}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminLTE.TWC.Core.Application", "src\core\AdminLTE.TWC.Core.Application\AdminLTE.TWC.Core.Application.csproj", "{700A44E1-0C9D-4071-8A1D-E1777476D161}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminLTE.TWC.Core.Domain", "src\core\AdminLTE.TWC.Core.Domain\AdminLTE.TWC.Core.Domain.csproj", "{5FD6BBA2-FBEC-4458-BC8C-84092C58E2B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EF0D75C0-B3DE-4307-A2BB-203DA637695B}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		LICENSE = LICENSE
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		global.json = global.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{083E73A3-7A0D-4466-90F8-9782F469B499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{083E73A3-7A0D-4466-90F8-9782F469B499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{083E73A3-7A0D-4466-90F8-9782F469B499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{083E73A3-7A0D-4466-90F8-9782F469B499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E02A03-BA3E-47C8-A040-D44E03EC270E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E02A03-BA3E-47C8-A040-D44E03EC270E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E02A03-BA3E-47C8-A040-D44E03EC270E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E02A03-BA3E-47C8-A040-D44E03EC270E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{700A44E1-0C9D-4071-8A1D-E1777476D161}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{700A44E1-0C9D-4071-8A1D-E1777476D161}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{700A44E1-0C9D-4071-8A1D-E1777476D161}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{700A44E1-0C9D-4071-8A1D-E1777476D161}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FD6BBA2-FBEC-4458-BC8C-84092C58E2B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD6BBA2-FBEC-4458-BC8C-84092C58E2B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD6BBA2-FBEC-4458-BC8C-84092C58E2B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FD6BBA2-FBEC-4458-BC8C-84092C58E2B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{700A44E1-0C9D-4071-8A1D-E1777476D161} = {9F11F9D0-5328-4F28-8A8A-80F77EE97606}
+		{5FD6BBA2-FBEC-4458-BC8C-84092C58E2B9} = {9F11F9D0-5328-4F28-8A8A-80F77EE97606}
+	EndGlobalSection
+EndGlobal
