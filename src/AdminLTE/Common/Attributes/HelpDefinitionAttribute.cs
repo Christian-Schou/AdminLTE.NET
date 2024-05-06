@@ -4,38 +4,49 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace AdminLTE.Common.Attributes;
 
+/// <summary>
+///     An attribute to use on controller actions to add a help definition on the page.
+/// </summary>
 [AttributeUsage(AttributeTargets.Method)]
-public class HelpDefinitionAttribute : ActionFilterAttribute, IActionFilter
+public class HelpDefinitionAttribute : ActionFilterAttribute
 {
     /// <summary>
-    ///     By declaring this on the IActionResult method, you are enabling
+    ///     The name of the help file.
     /// </summary>
-    /// <param name="fileName">specify specific filename located in wwwroot\files\Shared folder</param>
-    /// <param name="filePath">THIS MUST BE EMPTY</param>
-    /// <param name="memberName">THIS MUST BE EMPTY</param>
-    public HelpDefinitionAttribute(string fileName = "", [CallerFilePath] string filePath = "",
-        [CallerMemberName] string memberName = "")
+    private string PageHelpFileName { get; }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="HelpDefinitionAttribute"/> class.
+    /// </summary>
+    /// <param name="fileName">The specific filename located in wwwroot\files\Shared folder.</param>
+    /// <param name="filePath">The file path of the calling method. This is automatically populated by the runtime.</param>
+    /// <param name="memberName">The name of the calling method. This is automatically populated by the runtime.</param>
+    public HelpDefinitionAttribute(string fileName = "", [CallerFilePath] string filePath = "", [CallerMemberName] string memberName = "")
     {
-        var controllerName = filePath.Split('\\').Last().Replace("Controller.cs", string.Empty);
-        if (fileName ==
-            string.Empty) //if not specified, will check it on the common help location plus path from class+method.html
+        var controllerName = Path.GetFileName(filePath).Replace("Controller.cs", string.Empty);
+
+        // If fileName is not specified, the help file is assumed to be located at a common help location
+        // plus the path from class+method.html
+        if (string.IsNullOrEmpty(fileName))
         {
-            _pageHelpFileName = controllerName + @"\" + memberName; //ChildController + ActionMethod
+            PageHelpFileName = Path.Combine(controllerName, memberName); // Format: ChildController\ActionMethod
         }
-        else //if specified, will check it in the common help location
+        else // If fileName is specified, the help file is assumed to be located in the common help location
         {
-            _pageHelpFileName = @"Shared\" + fileName;
+            PageHelpFileName = Path.Combine("Shared", fileName);
         }
     }
 
-    private string _fileName { get; set; }
-    private string _memberName { get; set; }
-    private string _pageHelpFileName { get; }
-
-
+    /// <summary>
+    ///     Called by the ASP.NET Core framework before the action result executes.
+    ///     It adds the help file name to the ViewBag.
+    /// </summary>
+    /// <param name="filterContext">The context for the action filter.</param>
     public override void OnResultExecuting(ResultExecutingContext filterContext)
     {
-        var controller = filterContext.Controller as Controller;
-        controller.ViewBag.PageHelpFileName = _pageHelpFileName;
+        if (filterContext.Controller is Controller controller)
+        {
+            controller.ViewBag.PageHelpFileName = PageHelpFileName;
+        }
     }
 }

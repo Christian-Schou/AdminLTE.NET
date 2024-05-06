@@ -2,17 +2,29 @@
 
 namespace AdminLTE.Services;
 
+/// <summary>
+///     A middleware for logging all requests.
+/// </summary>
 public class RequestLoggingMiddleware
 {
     private readonly ILogger<RequestLoggingMiddleware> _logger;
     private readonly RequestDelegate _next;
 
+    /// <summary>
+    ///     A constructor for the request logging middleware.
+    /// </summary>
+    /// <param name="next"></param>
+    /// <param name="logger"></param>
     public RequestLoggingMiddleware(RequestDelegate next, ILogger<RequestLoggingMiddleware> logger)
     {
         _next = next;
         _logger = logger;
     }
 
+    /// <summary>
+    ///     Method that is invoked upon each request and will log the request information.
+    /// </summary>
+    /// <param name="context"></param>
     public async Task Invoke(HttpContext context)
     {
         var startTime = DateTime.UtcNow;
@@ -29,7 +41,7 @@ public class RequestLoggingMiddleware
                                 Duration: {duration}";
 
         _logger.LogInformation(logTemplate,
-            context.Connection.RemoteIpAddress.ToString(),
+            context.Connection.RemoteIpAddress?.ToString(),
             context.Request.Path,
             context.Request.ContentType,
             context.Request.ContentLength,

@@ -82,7 +82,7 @@ public class AuditableSignInManager<TUser> : SignInManager<TUser> where TUser : 
         {
             var ip = _contextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
 
-            var auditRecord = UserAudit.CreateAuditEvent(user.Id, UserAuditEventType.LogOut, ip);
+            var auditRecord = UserAudit.CreateAuditEvent(user.Id, UserAuditEventType.Logout, ip);
             _db.UserAuditEvents.Add(auditRecord);
             await _db.SaveChangesAsync();
         }
