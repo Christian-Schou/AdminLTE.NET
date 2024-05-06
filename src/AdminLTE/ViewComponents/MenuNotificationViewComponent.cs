@@ -1,34 +1,27 @@
 ﻿using AdminLTE.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
-namespace AdminLTE.ViewComponents
+namespace AdminLTE.ViewComponents;
+
+public class MenuNotificationViewComponent : ViewComponent
 {
-    public class MenuNotificationViewComponent : ViewComponent
+    public IViewComponentResult Invoke(string filter)
     {
+        var messages = GetData();
+        return View(messages);
+    }
 
-        public MenuNotificationViewComponent()
+    private List<Message> GetData()
+    {
+        var messages = new List<Message>();
+        messages.Add(new Message
         {
-        }
+            Id = 1,
+            FontAwesomeIcon = "bi bi-people-fill text-aqua",
+            ShortDesc = "5 new members joined today",
+            URLPath = "#"
+        });
 
-        public IViewComponentResult Invoke(string filter)
-        {
-            var messages = GetData();
-            return View(messages);
-        }
-
-        private List<Message> GetData()
-        {
-            var messages = new List<Message>();
-            messages.Add(new Message
-            {
-                Id = 1,
-                FontAwesomeIcon = "bi bi-people-fill text-aqua",
-                ShortDesc = "5 new members joined today",
-                URLPath = "#",
-            });
-
-            return messages;
-        }
+        return messages;
     }
 }

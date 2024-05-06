@@ -6,7 +6,7 @@
     {
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <b><i class="icon bi bi-ban-fill"></i> Error!</b> @Html.Raw(@item.ShortDesc)
+            <b><i class="icon bi bi-ban-fill"></i> Error!</b> @Html.Raw(item.ShortDesc)
         </div>
     }
 
@@ -14,7 +14,7 @@
     {
         <div class="alert alert-info alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <b><i class="icon bi bi-info-circle-fill"></i> Info!</b> @Html.Raw(@item.ShortDesc)
+            <b><i class="icon bi bi-info-circle-fill"></i> Info!</b> @Html.Raw(item.ShortDesc)
         </div>
     }
 
@@ -22,7 +22,7 @@
     {
         <div class="alert alert-warning alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <b><i class="icon bi bi-exclamation-triangle-fill"></i> Warning!</b> @Html.Raw(@item.ShortDesc)
+            <b><i class="icon bi bi-exclamation-triangle-fill"></i> Warning!</b> @Html.Raw(item.ShortDesc)
         </div>
     }
 
@@ -30,8 +30,7 @@
     {
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <b><i class="icon bi bi-check"></i> Success!</b> @Html.Raw(@item.ShortDesc)
+            <b><i class="icon bi bi-check"></i> Success!</b> @Html.Raw(item.ShortDesc)
         </div>
     }
 }
-

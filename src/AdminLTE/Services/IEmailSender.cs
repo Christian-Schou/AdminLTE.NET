@@ -1,9 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿namespace AdminLTE.Services;
 
-namespace AdminLTE.Services
+public interface IEmailSender
 {
-    public interface IEmailSender
-    {
-        Task SendEmailAsync(string email, string subject, string message);
-    }
+    Task SendEmailAsync(string email, string subject, string message);
 }

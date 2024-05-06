@@ -1,28 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 
-namespace AdminLTE.ViewComponents
+namespace AdminLTE.ViewComponents;
+
+public class PageHeaderViewComponent : ViewComponent
 {
-    public class PageHeaderViewComponent : ViewComponent
+    public IViewComponentResult Invoke(string filter)
     {
+        Tuple<string, string> message;
 
-        public PageHeaderViewComponent()
+        if (ViewBag.PageHeader == null)
         {
+            message = Tuple.Create(string.Empty, string.Empty);
+        }
+        else
+        {
+            message = ViewBag.PageHeader as Tuple<string, string>;
         }
 
-        public IViewComponentResult Invoke(string filter)
-        {
-            Tuple<string, string> message;
-
-            if (ViewBag.PageHeader == null)
-            {
-                message = Tuple.Create(string.Empty, string.Empty);
-            }
-            else
-            {
-                message = ViewBag.PageHeader as Tuple<string, string>;
-            }
-            return View(message);
-        }
+        return View(message);
     }
 }

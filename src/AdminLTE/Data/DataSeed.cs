@@ -1,94 +1,82 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using AdminLTE.Models;
+﻿using System.Security.Claims;
 using AdminLTE.Common;
+using AdminLTE.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
+namespace AdminLTE.Data;
 
-namespace AdminLTE.Data
+public static class DataSeed
 {
-    public static class DataSeed
+    public static async Task Seed(IServiceProvider serviceProvider)
     {
-        public static async Task Seed(IServiceProvider serviceProvider)
+        var scopeFactory = serviceProvider.GetRequiredService<IServiceScopeFactory>();
+
+        using (var scope = scopeFactory.CreateScope())
         {
-            IServiceScopeFactory scopeFactory = serviceProvider.GetRequiredService<IServiceScopeFactory>();
+            var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            context.Database.Migrate();
 
-            using (IServiceScope scope = scopeFactory.CreateScope())
+            var _userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            // Seed database code goes here
+
+            // User Info
+            //string userName = "SuperAdmin";
+            var firstName = "Super";
+            var lastName = "Admin";
+            var email = "superadmin@admin.com";
+            var password = "Qwaszx123$";
+            var role = "SuperAdmins";
+            var role2 = "SeniorManagers";
+            var role3 = "Managers";
+
+            if (await _userManager.FindByNameAsync(email) == null)
             {
-                var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                context.Database.Migrate();
-
-                UserManager<ApplicationUser> _userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-                RoleManager<IdentityRole> roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-                // Seed database code goes here
-
-                // User Info
-                //string userName = "SuperAdmin";
-                string firstName = "Super";
-                string lastName = "Admin";
-                string email = "superadmin@admin.com";
-                string password = "Qwaszx123$";
-                string role = "SuperAdmins";
-                string role2 = "SeniorManagers";
-                string role3 = "Managers";
-
-                if (await _userManager.FindByNameAsync(email) == null)
+                // Create SuperAdmins role if it doesn't exist
+                if (await roleManager.FindByNameAsync(role) == null)
                 {
-                    // Create SuperAdmins role if it doesn't exist
-                    if (await roleManager.FindByNameAsync(role) == null)
-                    {
-                        await roleManager.CreateAsync(new IdentityRole(role));
-                    }
-                    if (await roleManager.FindByNameAsync(role2) == null)
-                    {
-                        await roleManager.CreateAsync(new IdentityRole(role2));
-                    }
-                    if (await roleManager.FindByNameAsync(role3) == null)
-                    {
-                        await roleManager.CreateAsync(new IdentityRole(role3));
-                    }
+                    await roleManager.CreateAsync(new IdentityRole(role));
+                }
 
-                    // Create user account if it doesn't exist
-                    ApplicationUser user = new ApplicationUser
-                    {
-                        UserName = email,
-                        Email = email,
-                        //extended properties
-                        FirstName = firstName,
-                        LastName = lastName,
-                        AvatarURL = "/images/user.png",
-                        DateRegistered = DateTime.UtcNow.ToString(),
-                        Position = "",
-                        NickName = "",
-                    };
+                if (await roleManager.FindByNameAsync(role2) == null)
+                {
+                    await roleManager.CreateAsync(new IdentityRole(role2));
+                }
 
-                    IdentityResult result = await _userManager.CreateAsync(user, password);
+                if (await roleManager.FindByNameAsync(role3) == null)
+                {
+                    await roleManager.CreateAsync(new IdentityRole(role3));
+                }
 
-                    // Assign role to the user
-                    if (result.Succeeded)
-                    {
-                        await _userManager.AddClaimAsync(user, new Claim(CustomClaimTypes.GivenName, user.FirstName));
-                        await _userManager.AddClaimAsync(user, new Claim(CustomClaimTypes.Surname, user.LastName));
-                        await _userManager.AddClaimAsync(user, new Claim(CustomClaimTypes.AvatarURL, user.AvatarURL));
+                // Create user account if it doesn't exist
+                var user = new ApplicationUser
+                {
+                    UserName = email,
+                    Email = email,
+                    //extended properties
+                    FirstName = firstName,
+                    LastName = lastName,
+                    AvatarURL = "/images/user.png",
+                    DateRegistered = DateTime.UtcNow.ToString(),
+                    Position = "",
+                    NickName = ""
+                };
 
-                        //SignInManager<ApplicationUser> _signInManager = serviceProvider.GetRequiredService<SignInManager<ApplicationUser>>();
-                        //await _signInManager.SignInAsync(user, isPersistent: false);
+                var result = await _userManager.CreateAsync(user, password);
 
-                        await _userManager.AddToRoleAsync(user, role);
-                    }
+                // Assign role to the user
+                if (result.Succeeded)
+                {
+                    await _userManager.AddClaimAsync(user, new Claim(CustomClaimTypes.GivenName, user.FirstName));
+                    await _userManager.AddClaimAsync(user, new Claim(CustomClaimTypes.Surname, user.LastName));
+                    await _userManager.AddClaimAsync(user, new Claim(CustomClaimTypes.AvatarURL, user.AvatarURL));
+
+                    //SignInManager<ApplicationUser> _signInManager = serviceProvider.GetRequiredService<SignInManager<ApplicationUser>>();
+                    //await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    await _userManager.AddToRoleAsync(user, role);
                 }
             }
         }

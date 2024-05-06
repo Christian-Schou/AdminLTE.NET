@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace AdminLTE.Models.ManageViewModels
+namespace AdminLTE.Models.ManageViewModels;
+
+public class ConfigureTwoFactorViewModel
 {
-    public class ConfigureTwoFactorViewModel
-    {
-        public string SelectedProvider { get; set; }
+    public string SelectedProvider { get; set; }
 
-        public ICollection<SelectListItem> Providers { get; set; }
-    }
+    public ICollection<SelectListItem> Providers { get; set; }
 }

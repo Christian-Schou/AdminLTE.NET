@@ -1,8 +1,8 @@
-﻿<link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" asp-append-version="true" />
+﻿<link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" asp-append-version="true"/>
 <script src="~/lib/datatables/js/jquery.dataTables.min.js" asp-append-version="true"></script>
 <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js" asp-append-version="true"></script>
 
-@model System.Collections.Generic.IEnumerable<AdminLTE.Models.UserAudit>
+@model IEnumerable<UserAudit>
 
 @{
     ViewData["Title"] = "User Logs";
@@ -13,26 +13,27 @@
 <br>
 <table class="table" id="myTable">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserAuditId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Timestamp)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AuditEvent)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IpAddress)
-            </th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserAuditId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Timestamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuditEvent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IpAddress)
+        </th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.UserAuditId)
@@ -50,7 +51,7 @@
                 @Html.DisplayFor(modelItem => item.IpAddress)
             </td>
         </tr>
-}
+    }
     </tbody>
 </table>
 

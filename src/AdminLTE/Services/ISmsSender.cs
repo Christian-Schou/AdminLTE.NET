@@ -1,9 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿namespace AdminLTE.Services;
 
-namespace AdminLTE.Services
+public interface ISmsSender
 {
-    public interface ISmsSender
-    {
-        Task SendSmsAsync(string number, string message);
-    }
+    Task SendSmsAsync(string number, string message);
 }

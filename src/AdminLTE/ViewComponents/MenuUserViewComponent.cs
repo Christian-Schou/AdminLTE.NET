@@ -1,19 +1,11 @@
-﻿using AdminLTE.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AdminLTE.ViewComponents
+namespace AdminLTE.ViewComponents;
+
+public class MenuUserViewComponent : ViewComponent
 {
-    public class MenuUserViewComponent : ViewComponent
+    public IViewComponentResult Invoke(string filter)
     {
-
-        public MenuUserViewComponent()
-        {
-        }
-
-        public IViewComponentResult Invoke(string filter)
-        {
-            return View();
-        }
+        return View();
     }
 }

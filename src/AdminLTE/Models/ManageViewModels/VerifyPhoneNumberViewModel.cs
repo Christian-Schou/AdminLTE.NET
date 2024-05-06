@@ -1,15 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AdminLTE.Models.ManageViewModels
-{
-    public class VerifyPhoneNumberViewModel
-    {
-        [Required]
-        public string Code { get; set; }
+namespace AdminLTE.Models.ManageViewModels;
 
-        [Required]
-        [Phone]
-        [Display(Name = "Phone number")]
-        public string PhoneNumber { get; set; }
-    }
+public class VerifyPhoneNumberViewModel
+{
+    [Required] public string Code { get; set; }
+
+    [Required]
+    [Phone]
+    [Display(Name = "Phone number")]
+    public string PhoneNumber { get; set; }
 }

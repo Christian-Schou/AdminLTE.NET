@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace AdminLTE.Models.RoleViewModels
+namespace AdminLTE.Models.RoleViewModels;
+
+public class ModifyRoleVm
 {
-    public class ModifyRoleVm
-    {
-        [Required]
-        public string RoleName { get; set; }
+    [Required] public string RoleName { get; set; }
 
-        public string RoleId { get; set; }
-        public string[] IdsToAdd { get; set; }
-        public string[] IdsToRemove { get; set; }
-
-    }
+    public string RoleId { get; set; }
+    public string[] IdsToAdd { get; set; }
+    public string[] IdsToRemove { get; set; }
 }

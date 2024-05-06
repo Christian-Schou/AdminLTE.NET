@@ -1,17 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AdminLTE.ViewComponents
+namespace AdminLTE.ViewComponents;
+
+public class FooterViewComponent : ViewComponent
 {
-    public class FooterViewComponent : ViewComponent
+    public IViewComponentResult Invoke(string filter)
     {
-
-        public FooterViewComponent()
-        {
-        }
-
-        public IViewComponentResult Invoke(string filter)
-        {
-            return View();
-        }
+        return View();
     }
 }

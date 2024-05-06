@@ -1,17 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AdminLTE.ViewComponents
+namespace AdminLTE.ViewComponents;
+
+public class HeaderViewComponent : ViewComponent
 {
-    public class HeaderViewComponent : ViewComponent
+    public IViewComponentResult Invoke(string filter)
     {
-
-        public HeaderViewComponent()
-        {
-        }
-
-        public IViewComponentResult Invoke(string filter)
-        {
-            return View();
-        }
+        return View();
     }
 }

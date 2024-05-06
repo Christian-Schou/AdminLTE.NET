@@ -8,12 +8,12 @@
 <div class="text-danger" asp-validation-summary="All"></div>
 
 <form method="post" asp-controller="Role" asp-action="Edit" asp-antiforgery="true" class="form-horizontal">
-    <input type="hidden" name="RoleId" value="@Model.Role.Id" />
+    <input type="hidden" name="RoleId" value="@Model.Role.Id"/>
 
     <div class="form-group">
         <label class="control-label col-sm-2" for="RoleName">Role Name:</label>
         <div class="col-sm-2">
-            <input class="form-control" name="RoleName" value="@Model.Role.Name" />
+            <input class="form-control" name="RoleName" value="@Model.Role.Name"/>
         </div>
     </div>
 
@@ -29,12 +29,12 @@
         }
         else
         {
-            foreach (ApplicationUser user in Model.NonMembers)
+            foreach (var user in Model.NonMembers)
             {
                 <tr>
                     <td>@user.UserName</td>
                     <td>
-                        <input type="checkbox" name="IdsToAdd" value="@user.Id" />
+                        <input type="checkbox" name="IdsToAdd" value="@user.Id"/>
                     </td>
                 </tr>
             }
@@ -53,12 +53,12 @@
         }
         else
         {
-            foreach (ApplicationUser user in Model.Members)
+            foreach (var user in Model.Members)
             {
                 <tr>
                     <td>@user.UserName</td>
                     <td>
-                        <input type="checkbox" name="IdsToRemove" value="@user.Id" />
+                        <input type="checkbox" name="IdsToRemove" value="@user.Id"/>
                     </td>
                 </tr>
             }

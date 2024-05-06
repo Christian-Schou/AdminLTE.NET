@@ -7,18 +7,17 @@
     </a>
     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
         <span class="dropdown-item dropdown-header">@Model.Count() notifications</span>
-            @foreach (var message in Model)
-            {
-                <div class="dropdown-divider"></div>
-                    <!-- start notification -->
-                    <a href="@message.URLPath" class="dropdown-item">
-                        <i class="@message.FontAwesomeIcon"></i> @message.ShortDesc
-                    </a>
-                
-            }
-                <!-- end notification -->
-            
-        
+        @foreach (var message in Model)
+        {
+            <div class="dropdown-divider"></div>
+            <!-- start notification -->
+            <a href="@message.URLPath" class="dropdown-item">
+                <i class="@message.FontAwesomeIcon"></i> @message.ShortDesc
+            </a>
+        }
+        <!-- end notification -->
+
+
         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
     </div>
 </li>
